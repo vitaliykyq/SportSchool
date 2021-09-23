@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+<nav class="page-nav">
+    <ul class="page-menu">
+        <li
+                data-text="Coach"
+                th:href = "@{/ui/coach/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Coach
+        </li>
+        <li
+                data-text="Competition"
+                th:href = "@{/ui/competition/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Competition
+        </li>
+        <li
+                data-text="Famous Sportsmen"
+                th:href = "@{/ui/famousSportsmen/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Famous Sportsmen
+        </li>
+        <li
+                data-text="Group"
+                th:href = "@{/ui/group/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Group
+        </li>
+        <li
+                data-text="Places"
+                th:href = "@{/ui/places/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Places
+        </li>
+        <li
+                data-text="Sportsmen"
+                th:href = "@{/ui/sportsmen/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Sportsmen
+        </li>
+        <li
+                data-text="Team"
+                th:href = "@{/ui/team/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Team
+        </li>
+    </ul>
+</nav>
+</body>
+</html>

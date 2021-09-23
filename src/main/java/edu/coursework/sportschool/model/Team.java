@@ -1,0 +1,35 @@
+package edu.coursework.sportschool.model;
+
+/*
+    @author:    Anton
+    @project:    SportSchool
+    @class:    Team
+    @version:    1.0.0 
+    @since:    15.04.2021     
+*/
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Document(collection = "team")
+public class Team {
+    @Id
+    private String id;
+
+    private String name;
+    private Sport sport;
+    private int numOfKids;
+    private int rating;
+
+    private Date createdAt;
+    private Date modifiedAt;
+    private String description;
+}

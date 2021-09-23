@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Coach List</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+<button class="menu-toggle hamburger"></button>
+<nav>
+    <ul class="menu">
+        <li
+                data-text="Coach"
+                th:href = "@{/ui/coach/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Coach
+        </li>
+        <li
+                data-text="Competition"
+                th:href = "@{/ui/competition/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Competition
+        </li>
+        <li
+                data-text="Famous Sportsmen"
+                th:href = "@{/ui/famousSportsmen/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Famous Sportsmen
+        </li>
+        <li
+                data-text="Group"
+                th:href = "@{/ui/group/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Group
+        </li>
+        <li
+                data-text="Places"
+                th:href = "@{/ui/places/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Places
+        </li>
+        <li
+                data-text="Sportsmen"
+                th:href = "@{/ui/sportsmen/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Sportsmen
+        </li>
+        <li
+                data-text="Team"
+                th:href = "@{/ui/team/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Team
+        </li>
+    </ul>
+</nav>
+<div class="container">
+    <table class="responsive-table">
+        <caption>List Coach</caption>
+        <thead>
+
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Year</th>
+            <th scope="col">Sport</th>
+            <th scope="col">CreatedAt</th>
+            <th scope="col">ModifiedAt</th>
+            <th scope="col" colspan="2">OPTIONS</th>
+        </tr>
+
+
+        </thead>
+
+        <tbody>
+        <tr th:each="coach: ${coachList}">
+            <td th:text="${coach.id}"></td>
+            <td th:text="${coach.name}"></td>
+            <td th:text="${coach.year}"></td>
+            <td>
+                <a
+                        th:text="${coach.sport}"
+                ></a>
+            </td>
+            <td th:text="${coach.createdAt}"></td>
+            <td th:text="${coach.modifiedAt}"></td>
+            <td class="options">
+                <a  th:href="@{/ui/coach/delete/{id}(id=${coach.id})}">
+                    <button class="first">Delete</button>
+                </a>
+                <a th:href="@{/ui/coach/showUpdateForm/{id}(id=${coach.id})}">
+                    <button class="last">Edit</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+    <br>
+
+    <div style="text-align: center">
+        <a th:href = "@{/ui/coach/showNewForm}" class="containerButton">Add</a>
+    </div>
+</div>
+</body>
+<script>
+    $('button').on('click', function(){
+        $('body').toggleClass('open');
+    });
+</script>
+</html>

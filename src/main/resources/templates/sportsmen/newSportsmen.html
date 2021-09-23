@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Sportsmen</title>
+    <link  th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body style="text-align: center" onclick="checkedTable()">
+<button class="menu-toggle hamburger"></button>
+<nav>
+    <ul class="menu">
+        <li
+                data-text="Coach"
+                th:href = "@{/ui/coach/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Coach
+        </li>
+        <li
+                data-text="Competition"
+                th:href = "@{/ui/competition/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Competition
+        </li>
+        <li
+                data-text="Famous Sportsmen"
+                th:href = "@{/ui/famousSportsmen/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Famous Sportsmen
+        </li>
+        <li
+                data-text="Group"
+                th:href = "@{/ui/group/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Group
+        </li>
+        <li
+                data-text="Places"
+                th:href = "@{/ui/places/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Places
+        </li>
+        <li
+                data-text="Sportsmen"
+                th:href = "@{/ui/sportsmen/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Sportsmen
+        </li>
+        <li
+                data-text="Team"
+                th:href = "@{/ui/team/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Team
+        </li>
+    </ul>
+</nav>
+<div>
+    <div>
+        <form action="#" th:action="@{/ui/sportsmen/add}" th:object="${sportsmen}"
+              method="POST">
+
+            <h1>Add Sportsmen</h1>
+
+            <table class="edit">
+                <tr>
+                    <td><label>Name</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{name}" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Year</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{year}" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Group</label></td>
+                    <td>
+                        <div class="input">
+                            <select th:field="*{group}" onclick="checkedInput()">
+                                <option th:each="group: ${groupList}"
+                                        th:value="${group.id}" th:text="${group.ageGap}">
+                                </option>
+                            </select>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Team</label></td>
+                    <td>
+                        <div class="input">
+                            <select th:field="*{team}" onclick="checkedInput()">
+                                <option th:each="team: ${teamList}"
+                                        th:value="${team.id}" th:text="${team.name}">
+                                </option>
+                            </select>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+
+            <br>
+            <br>
+
+            <div class="control">
+                <div class="buttonBack">
+                    <a th:href = "@{/ui/sportsmen/get/all}" class="containerButton">Back</a>
+                </div>
+                <button type="submit">Add</button>
+            </div>
+        </form>
+
+
+    </div>
+</div>
+</body>
+<script>
+    $('button').on('click', function(){
+        $('body').toggleClass('open');
+    });
+</script>
+<script>
+    let table = document.querySelector(".edit");
+    let check = false;
+
+    function checkedTable(){
+        table.setAttribute("class", "edit");
+        if(check){
+            table.setAttribute("class", "edit border");
+        }
+        check = false;
+    }
+
+    function  checkedInput(){
+        check = true;
+    }
+</script>
+</html>
